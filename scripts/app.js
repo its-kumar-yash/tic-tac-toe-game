@@ -1,7 +1,7 @@
 const gameData = [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
+  [0, 0, 0],
 ];
 
 let editedPlayer = 0;
@@ -20,6 +20,9 @@ const players = [
   },
 ];
 
+let isBackdropVisible = false; 
+
+const errorOverlayElement = document.getElementById("error-overlay");
 const playerConfigOverlayElement = document.getElementById("config-overlay");
 const backdropElement = document.getElementById("backdrop");
 const formElement = document.querySelector("form");
@@ -28,6 +31,7 @@ const gameAreaElement = document.getElementById("active-game");
 const activePlayerNameElement = document.getElementById("active-player-name");
 const gameOverElement = document.getElementById("game-over");
 
+const closeErrorOverlayBtnElement = document.getElementById("close-error-btn");
 const editPlayer1BtnElement = document.getElementById("edit-player-1-btn");
 const editPlayer2BtnElement = document.getElementById("edit-player-2-btn");
 const cancelConfigBtnElement = document.getElementById("cancel-config-btn");
@@ -40,6 +44,12 @@ editPlayer2BtnElement.addEventListener("click", openPlayerConfig);
 
 cancelConfigBtnElement.addEventListener("click", closePlayerConfig);
 backdropElement.addEventListener("click", closePlayerConfig);
+
+closeErrorOverlayBtnElement.addEventListener("click", () => {
+  errorOverlayElement.style.display = "none";
+  backdropElement.style.display = "none";
+  isBackdropVisible = false;
+});
 
 formElement.addEventListener("submit", savePlayerConfig);
 

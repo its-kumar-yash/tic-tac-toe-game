@@ -25,12 +25,16 @@ function resetGameStatus() {
 
 function startNewGame() {
   if (players[0].name === "" || players[1].name === "") {
-    alert("Please set custom player names for both players!");
+    // alert("Please set custom player names for both players!");
+    errorOverlayElement.firstElementChild.textContent = "Please set custom player names for both players!";
+    errorOverlayElement.style.display = "block";
+    backdropElement.style.display = "block";
+    isBackdropVisible = true; 
     return;
   }
 
   resetGameStatus();
-
+  
   activePlayerNameElement.textContent = players[activePlayer].name;
   gameAreaElement.style.display = "block";
 }
@@ -53,7 +57,11 @@ function selectGameField(event) {
   const selectedRow = selectedField.dataset.row - 1;
 
   if (gameData[selectedRow][selectedColumn] > 0) {
-    alert("Please select an empty field!");
+    // alert("Please select an empty field!");
+    errorOverlayElement.firstElementChild.textContent = "Please select an empty field!";
+    errorOverlayElement.style.display = "block";
+    backdropElement.style.display = "block";
+    isBackdropVisible = true; 
     return;
   }
 

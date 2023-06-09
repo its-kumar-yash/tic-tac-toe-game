@@ -7,7 +7,9 @@ function openPlayerConfig(event) {
 
 function closePlayerConfig() {
   playerConfigOverlayElement.style.display = "none";
-  backdropElement.style.display = "none";
+  if(isBackdropVisible == false){
+    backdropElement.style.display = "none";
+  }
   formElement.firstElementChild.classList.remove("error");
   errorsOutputElement.textContent = "";
   formElement.firstElementChild.lastElementChild.value = "";
